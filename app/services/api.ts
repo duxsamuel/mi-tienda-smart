@@ -1,9 +1,5 @@
-export type Producto={
-  id: string;
-  nombre: string;
-  precio: number;
-  cantidad: number;
-};
+import type { Producto } from "../types/producto";
+export type { Producto };
 
 const API_URL = ""; // aqui va url de lambda
 let mock: Producto[] = [];
