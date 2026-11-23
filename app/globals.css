@@ -1,12 +1,5 @@
 @import "tailwindcss";
 
-/* =========================================================
-   app/globals.css  —  Estilos compartidos (blanco + azul)
-   Si el proyecto usa Tailwind, deja arriba la línea que ya
-   trae (@import "tailwindcss"; o @tailwind base/components/utilities)
-   y pega todo esto DEBAJO.
-   ========================================================= */
-
 :root {
   --azul-900: #0b2a5b;
   --azul-700: #1d4ed8;
