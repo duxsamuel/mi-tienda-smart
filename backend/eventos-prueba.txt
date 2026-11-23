@@ -1,0 +1,5 @@
+EVENTO GET (pide la lista de productos):
+{"requestContext":{"http":{"method":"GET"}}}
+
+EVENTO POST (guarda un producto):
+{"requestContext":{"http":{"method":"POST"}},"body":"{\"nombre\":\"Arroz\",\"precio\":4000,\"cantidad\":20}"}
