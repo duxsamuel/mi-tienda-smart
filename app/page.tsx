@@ -16,7 +16,7 @@ export default function Home() {
           <span className="logo">MiTiendaSmart</span>
           <div className="navbar-acciones">
             <Link href="/login" className="btn btn-secundario">Iniciar sesión</Link>
-            <Link href="/dashboard" className="btn btn-primario">Ir al panel</Link>
+            <Link href="/login" className="btn btn-primario">Ir al panel</Link>
           </div>
         </div>
       </header>
