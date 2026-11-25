@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+```markdown
+# MiTiendaSmart
 
-## Getting Started
+SaaS web application for inventory management in small businesses, built with Next.js (static export) and a serverless backend on AWS Lambda + DynamoDB.
 
-First, run the development server:
+## Demo
+- **Production:** `https://YOUR-DOMAIN.tech`
+- **GitHub Pages:** `https://duxsamuel.github.io/mi-tienda-smart/`
 
+## Features
+- Full product CRUD (create, list, update, and delete).
+- Automatic inventory metrics (total products, total units, and total inventory value).
+- Fallback mode using mock data when `NEXT_PUBLIC_API_URL` is not set.
+
+## Tech Stack
+- **Frontend:** Next.js 16 (App Router) + TypeScript + global CSS (`app/globals.css`).
+- **Backend:** AWS Lambda (Node.js 20+) with Function URL and CORS enabled.
+- **Database:** Amazon DynamoDB (`Productos` table, `id` partition key).
+- **Deployment:** GitHub Actions + GitHub Pages + `.tech` domain.
+
+## Local Setup & Execution
 ```bash
+git clone [https://github.com/duxsamuel/mi-tienda-smart.git](https://github.com/duxsamuel/mi-tienda-smart.git)
+cd mi-tienda-smart
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create a `.env.local` file in the root directory (ignored by Git) to connect to AWS:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```env
+NEXT_PUBLIC_API_URL=[https://YOUR-FUNCTION-URL.lambda-url.us-east-1.on.aws/](https://YOUR-FUNCTION-URL.lambda-url.us-east-1.on.aws/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
 
-## Learn More
+## API Endpoints
 
-To learn more about Next.js, take a look at the following resources:
+| Method | Path | Description |
+| --- | --- | --- |
+| `GET` | `/` | Retrieves the list of products |
+| `POST` | `/` | Creates a new product (`{nombre, precio, cantidad}`) |
+| `PUT` | `/?id=ID` | Updates an existing product |
+| `DELETE` | `/?id=ID` | Deletes a product by `id` |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Git Workflow & Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* Feature branches (`feature/backend`, `feature/formulario`, `feature/tabla`, `feature/crud`, `feature/deploy`) → PR to `prod` → final PR to `main`.
+* When merged into `main`, `.github/workflows/deploy.yml` builds the static site (`out/`) and deploys it to GitHub Pages.
 
-## Deploy on Vercel
+## Team
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Academic project developed at **Universidad de la Costa (CUC)**, 2026.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+
+```
