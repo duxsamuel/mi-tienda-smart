@@ -1,26 +1,448 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --azul-900: #0b2a5b;
+  --azul-700: #1d4ed8;
+  --azul-600: #2563eb;
+  --azul-500: #3b82f6;
+  --azul-100: #dbeafe;
+  --azul-50: #eff6ff;
+  --blanco: #ffffff;
+  --texto: #0f172a;
+  --texto-suave: #475569;
+  --borde: #dbe4f3;
+  --sombra: 0 4px 16px rgba(37, 99, 235, 0.10);
+  --radio: 12px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html,
+body {
+  background: var(--blanco);
+  color: var(--texto);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  color: var(--azul-900);
+  line-height: 1.2;
+}
+
+/* ---------- Layout general ---------- */
+.contenedor {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.seccion {
+  padding: 56px 0;
+}
+
+.titulo-seccion {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.subtitulo {
+  text-align: center;
+  color: var(--texto-suave);
+  margin-bottom: 32px;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  background: var(--blanco);
+  border-bottom: 1px solid var(--borde);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar-interno {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--azul-700);
+}
+
+.navbar-acciones {
+  display: flex;
+  gap: 10px;
+}
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+  text-align: center;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primario {
+  background: var(--azul-600);
+  color: var(--blanco);
+}
+
+.btn-primario:hover {
+  background: var(--azul-700);
+}
+
+.btn-secundario {
+  background: var(--blanco);
+  color: var(--azul-600);
+  border-color: var(--azul-600);
+}
+
+.btn-secundario:hover {
+  background: var(--azul-50);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* ---------- Hero (landing) ---------- */
+.hero {
+  background: linear-gradient(180deg, var(--azul-50) 0%, var(--blanco) 100%);
+  text-align: center;
+  padding: 80px 0 64px;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  margin-bottom: 14px;
+}
+
+.hero p {
+  color: var(--texto-suave);
+  max-width: 560px;
+  margin: 0 auto 28px;
+  font-size: 1.1rem;
+}
+
+.hero-botones {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ---------- Planes ---------- */
+.grid-planes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.plan {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 28px 24px;
+  box-shadow: var(--sombra);
+  text-align: center;
+}
+
+.plan h3 {
+  margin-bottom: 8px;
+}
+
+.plan .precio {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--azul-600);
+  margin-bottom: 14px;
+}
+
+.plan ul {
+  list-style: none;
+  color: var(--texto-suave);
+  margin-bottom: 20px;
+}
+
+.plan li {
+  padding: 4px 0;
+}
+
+.plan-destacado {
+  border: 2px solid var(--azul-600);
+  background: var(--azul-50);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background: var(--azul-900);
+  color: var(--blanco);
+  text-align: center;
+  padding: 24px 0;
+  font-size: 0.9rem;
+}
+
+/* ---------- Login ---------- */
+.login-pagina {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--azul-50), var(--azul-100));
+  padding: 20px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--blanco);
+  border-radius: var(--radio);
+  padding: 32px 28px;
+  box-shadow: var(--sombra);
+}
+
+.login-card h1 {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.login-card .subtitulo {
+  margin-bottom: 22px;
+}
+
+/* ---------- Formularios ---------- */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.campo label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--azul-900);
+}
+
+.campo input {
+  padding: 10px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--texto);
+  background: var(--blanco);
+}
+
+.campo input:focus {
+  outline: none;
+  border-color: var(--azul-600);
+  box-shadow: 0 0 0 3px var(--azul-100);
+}
+
+.form-producto {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 20px;
+  box-shadow: var(--sombra);
+}
+
+.form-producto h2 {
+  font-size: 1.2rem;
+  margin-bottom: 14px;
+}
+
+.form-producto-fila {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+}
+
+.mensaje-error {
+  color: #b91c1c;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+/* ---------- Dashboard ---------- */
+.dashboard-pagina {
+  min-height: 100vh;
+  background: var(--azul-50);
+}
+
+.dashboard-header {
+  background: var(--azul-600);
+  color: var(--blanco);
+  padding: 18px 0;
+}
+
+.dashboard-header .contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.dashboard-header h1 {
+  color: var(--blanco);
+  font-size: 1.4rem;
+}
+
+.dashboard-contenido {
+  display: grid;
+  gap: 24px;
+  padding: 28px 0 48px;
+}
+
+/* ---------- Indicadores ---------- */
+.indicadores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.indicador {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-left: 5px solid var(--azul-600);
+  border-radius: var(--radio);
+  padding: 18px;
+  box-shadow: var(--sombra);
+}
+
+.indicador .indicador-titulo {
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+.indicador .indicador-valor {
+  color: var(--azul-700);
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+/* ---------- Tabla ---------- */
+.tabla-wrapper {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  overflow-x: auto;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla th {
+  background: var(--azul-600);
+  color: var(--blanco);
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+}
+
+.tabla td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--borde);
+}
+
+.tabla tbody tr:nth-child(even) {
+  background: var(--azul-50);
+}
+
+.tabla tbody tr:hover {
+  background: var(--azul-100);
+}
+
+.tabla-vacia {
+  text-align: center;
+  color: var(--texto-suave);
+  padding: 24px;
+}
+
+/* ---------- Estados ---------- */
+.cargando {
+  text-align: center;
+  color: var(--azul-600);
+  font-weight: 600;
+  padding: 20px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .navbar-acciones .btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ===== CRUD: acciones de la tabla y modo edición ===== */
+.tabla-acciones {
+  display: flex;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.btn-chico {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.btn-peligro {
+  background: #ffffff;
+  color: #dc2626;
+  border: 1px solid #dc2626;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-peligro:hover {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.form-producto-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.form-producto-edicion {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
 }

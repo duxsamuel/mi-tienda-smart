@@ -1,0 +1,11 @@
+GET:
+{"requestContext":{"http":{"method":"GET"}}}
+
+POST:
+{"requestContext":{"http":{"method":"POST"}},"body":"{\"nombre\":\"Arroz\",\"precio\":4000,\"cantidad\":20}"}
+
+PUT (cambia PEGAR_ID por un id real que devolvió el POST o el GET):
+{"requestContext":{"http":{"method":"PUT"}},"queryStringParameters":{"id":"PEGAR_ID"},"body":"{\"nombre\":\"Arroz 2kg\",\"precio\":5000,\"cantidad\":15}"}
+
+DELETE (cambia PEGAR_ID):
+{"requestContext":{"http":{"method":"DELETE"}},"queryStringParameters":{"id":"PEGAR_ID"}}
