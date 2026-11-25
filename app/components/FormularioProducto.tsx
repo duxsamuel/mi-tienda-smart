@@ -5,12 +5,26 @@ import type { Producto } from "../types/producto";
 
 interface Props {
   onAgregar: (producto: Omit<Producto, "id">) => void;
+  productoEnEdicion?: Producto | null;
+  onActualizar?: (producto: Producto) => void;
+  onCancelar?: () => void;
 }
 
-export default function FormularioProducto({ onAgregar }: Props) {
-  const [nombre, setNombre] = useState("");
-  const [precio, setPrecio] = useState("");
-  const [cantidad, setCantidad] = useState("");
+export default function FormularioProducto({
+  onAgregar,
+  productoEnEdicion = null,
+  onActualizar,
+  onCancelar,
+}: Props) {
+  const editando = productoEnEdicion !== null;
+
+  const [nombre, setNombre] = useState(productoEnEdicion?.nombre ?? "");
+  const [precio, setPrecio] = useState(
+    productoEnEdicion ? String(productoEnEdicion.precio) : ""
+  );
+  const [cantidad, setCantidad] = useState(
+    productoEnEdicion ? String(productoEnEdicion.cantidad) : ""
+  );
   const [error, setError] = useState("");
 
   const enviar = (e: React.FormEvent) => {
@@ -25,15 +39,25 @@ export default function FormularioProducto({ onAgregar }: Props) {
     }
 
     setError("");
-    onAgregar({ nombre: nombre.trim(), precio: p, cantidad: c });
+    const datos = { nombre: nombre.trim(), precio: p, cantidad: c };
+
+    if (productoEnEdicion && onActualizar) {
+      onActualizar({ ...productoEnEdicion, ...datos });
+      return;
+    }
+
+    onAgregar(datos);
     setNombre("");
     setPrecio("");
     setCantidad("");
   };
 
   return (
-    <form className="form-producto" onSubmit={enviar}>
-      <h2>Agregar producto</h2>
+    <form
+      className={editando ? "form-producto form-producto-edicion" : "form-producto"}
+      onSubmit={enviar}
+    >
+      <h2>{editando ? "Editar producto" : "Agregar producto"}</h2>
 
       {error && <p className="mensaje-error">{error}</p>}
 
@@ -52,9 +76,16 @@ export default function FormularioProducto({ onAgregar }: Props) {
         </div>
       </div>
 
-      <button type="submit" className="btn btn-primario">
-        Agregar producto
-      </button>
+      <div className="form-producto-acciones">
+        <button type="submit" className="btn btn-primario">
+          {editando ? "Guardar cambios" : "Agregar producto"}
+        </button>
+        {editando && onCancelar && (
+          <button type="button" className="btn btn-secundario" onClick={onCancelar}>
+            Cancelar
+          </button>
+        )}
+      </div>
     </form>
   );
 }
