@@ -27,7 +27,7 @@ export default function Dashboard() {
     <main className="dashboard-pagina">
       <header className="dashboard-header">
         <div className="contenedor">
-          <h1>Panel de inventario</h1>
+          <h1>MiTiendaSmart - Panel de inventario</h1>
           <Link href="/" className="btn btn-secundario">Volver al inicio</Link>
         </div>
       </header>
@@ -43,6 +43,8 @@ export default function Dashboard() {
           </>
         )}
       </div>
+
+      <footer className="footer">Desarrollado por Breitner, Edwin, Samuel y Nicolás.<br/><br/>© 2026 MiTiendaSmart — bpds-mitiendasmart.tech<br/><br/>Contacto: saduquel@cuc.edu.co</footer>
     </main>
   );
 }
