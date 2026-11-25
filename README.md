@@ -1,10 +1,10 @@
-```markdown
+
 # MiTiendaSmart
 
 SaaS web application for inventory management in small businesses, built with Next.js (static export) and a serverless backend on AWS Lambda + DynamoDB.
 
 ## Demo
-- **Production:** `https://YOUR-DOMAIN.tech`
+- **Production:** `https://bpds-mitiendasmart.tech`
 - **GitHub Pages:** `https://duxsamuel.github.io/mi-tienda-smart/`
 
 ## Features
@@ -53,5 +53,5 @@ NEXT_PUBLIC_API_URL=[https://YOUR-FUNCTION-URL.lambda-url.us-east-1.on.aws/](htt
 Academic project developed at **Universidad de la Costa (CUC)**, 2026.
 
 ```
-
+By Samuel Duque, Edwin Cera, Nicolás Corro and Breitner Suárez.
 ```
