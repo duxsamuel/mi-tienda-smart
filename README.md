@@ -47,6 +47,28 @@ NEXT_PUBLIC_API_URL=https://YOUR-FUNCTION-URL.lambda-url.us-east-1.on.aws/
 
 * Feature branches (`feature/backend`, `feature/formulario`, `feature/tabla`, `feature/crud`, `feature/deploy`) → PR to `prod` → final PR to `main`.
 * When merged into `main`, `.github/workflows/deploy.yml` builds the static site (`out/`) and deploys it to GitHub Pages.
+## Project Structure
+```
+mi-tienda-smart/
+├── .github/workflows/deploy.yml   # CI/CD: build and publish to GitHub Pages
+├── app/
+│   ├── layout.tsx                 # Root layout (imports globals.css)
+│   ├── page.tsx                   # Landing page (/)
+│   ├── login/page.tsx             # Login (/login)
+│   ├── dashboard/page.tsx         # Inventory dashboard (/dashboard)
+│   ├── components/                # FormularioProducto, TablaProductos, Indicadores
+│   ├── services/api.ts            # Calls to the Function URL (or mock data)
+│   ├── types/producto.ts          # Producto type
+│   └── globals.css                # Global styles (white and blue)
+├── backend/                       # Lambda code and test events
+├── public/                        # Static assets
+└── next.config.ts                 # Static export (output: "export")
+```
+
+## Application Flow
+Landing (`/`) → Login (`/login`) → Dashboard (`/dashboard`).
+
+The dashboard calls `api.ts`, which sends requests to the AWS Lambda Function URL. Lambda reads and writes the `Productos` table in DynamoDB.
 
 ## Team
 
