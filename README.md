@@ -70,6 +70,17 @@ Landing (`/`) → Login (`/login`) → Dashboard (`/dashboard`).
 
 The dashboard calls `api.ts`, which sends requests to the AWS Lambda Function URL. Lambda reads and writes the `Productos` table in DynamoDB.
 
+## Build & Deploy
+- **Build:** `npm run build` generates the static site in the `out/` folder.
+- **Deploy:** every merge to `main` runs `.github/workflows/deploy.yml`, which publishes `out/` to GitHub Pages.
+- **Required variable:** `NEXT_PUBLIC_API_URL` (Settings → Secrets and variables → Actions → Variables).
+
+## CI/CD: `deploy.yml`
+- **Trigger:** `push` to `main`, or manual run (`workflow_dispatch`).
+- **Permissions:** read the code and publish to Pages.
+- **Job `build`:** checks out the code, installs Node 22, runs `npm ci` and `npm run build` (with the Lambda URL), and uploads `out/` as an artifact.
+- **Job `deploy`:** depends on `build` (`needs`) and publishes the artifact to GitHub Pages.
+
 ## Team
 
 Academic project developed at **Universidad de la Costa (CUC)**, 2026.
