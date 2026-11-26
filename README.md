@@ -100,6 +100,13 @@ Domain: `bpds-mitiendasmart.tech`
 | CNAME | `www` | `duxsamuel.github.io` |
 
 Then set the domain in Settings → Pages → Custom domain and enable Enforce HTTPS.
+
+## Resources
+- [Next.js documentation](https://nextjs.org/docs)
+- [GitHub Pages](https://docs.github.com/pages)
+- [GitHub Actions](https://docs.github.com/actions)
+- [AWS Lambda](https://docs.aws.amazon.com/lambda/)
+- [Amazon DynamoDB](https://docs.aws.amazon.com/dynamodb/)
 ## Team
 
 Academic project developed at **Universidad de la Costa (CUC)**, 2026.
