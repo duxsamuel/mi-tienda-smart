@@ -20,7 +20,7 @@ SaaS web application for inventory management in small businesses, built with Ne
 
 ## Local Setup & Execution
 ```bash
-git clone [https://github.com/duxsamuel/mi-tienda-smart.git](https://github.com/duxsamuel/mi-tienda-smart.git)
+git clone https://github.com/duxsamuel/mi-tienda-smart.git
 cd mi-tienda-smart
 npm install
 npm run dev
@@ -30,7 +30,7 @@ npm run dev
 Create a `.env.local` file in the root directory (ignored by Git) to connect to AWS:
 
 ```env
-NEXT_PUBLIC_API_URL=[https://YOUR-FUNCTION-URL.lambda-url.us-east-1.on.aws/](https://YOUR-FUNCTION-URL.lambda-url.us-east-1.on.aws/)
+NEXT_PUBLIC_API_URL=https://YOUR-FUNCTION-URL.lambda-url.us-east-1.on.aws/
 
 ```
 
