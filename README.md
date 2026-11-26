@@ -107,6 +107,24 @@ Then set the domain in Settings → Pages → Custom domain and enable Enforce H
 - [GitHub Actions](https://docs.github.com/actions)
 - [AWS Lambda](https://docs.aws.amazon.com/lambda/)
 - [Amazon DynamoDB](https://docs.aws.amazon.com/dynamodb/)
+
+## Screenshots
+
+### Creating a product
+![Dashboard with a new product](docs/img/imagen%201.jpeg)
+![DynamoDB table with the new item](docs/img/imagen%202.jpeg)
+
+### Editing products
+![Edit mode](docs/img/imagen%207.jpeg)
+![Dashboard after editing](docs/img/imagen%203.jpeg)
+![DynamoDB with the edited item and a new item](docs/img/imagen%204.jpeg)
+![Editing a second product](docs/img/imagen%208.jpeg)
+
+### Deleting products
+![DynamoDB after deleting the first item](docs/img/imagen%205.jpeg)
+![Delete confirmation](docs/img/imagen%209.jpeg)
+![Empty dashboard](docs/img/imagen%206.jpeg)
+
 ## Team
 
 Academic project developed at **Universidad de la Costa (CUC)**, 2026.
