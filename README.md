@@ -81,6 +81,25 @@ The dashboard calls `api.ts`, which sends requests to the AWS Lambda Function UR
 - **Job `build`:** checks out the code, installs Node 22, runs `npm ci` and `npm run build` (with the Lambda URL), and uploads `out/` as an artifact.
 - **Job `deploy`:** depends on `build` (`needs`) and publishes the artifact to GitHub Pages.
 
+## React & Configuration
+- **Main component:** `app/layout.tsx` wraps every page; `app/page.tsx` is the landing page.
+- **Routing:** each folder with a `page.tsx` inside `app/` is a route.
+- **Static files:** `public/` (source) and `out/` (build output).
+- **Styles:** `app/globals.css`.
+- **`next.config.ts`:** `output: "export"` generates plain HTML; `images.unoptimized` allows images without a server.
+
+## Custom Domain (DNS)
+Domain: `bpds-mitiendasmart.tech`
+
+| Type | Host | Value |
+| --- | --- | --- |
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `duxsamuel.github.io` |
+
+Then set the domain in Settings → Pages → Custom domain and enable Enforce HTTPS.
 ## Team
 
 Academic project developed at **Universidad de la Costa (CUC)**, 2026.
